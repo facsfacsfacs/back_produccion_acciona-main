@@ -1,0 +1,11 @@
+# 1. Seguridad: Evitar que se listen archivos
+Options -Indexes
+
+# 2. Configuración del motor de reescritura
+RewriteEngine On
+
+# 3. Redirigir todo al proceso de Node.js (Proxy)
+# Nota: cPanel suele manejar esto automáticamente si usas "Application Manager"
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://127.0.0.1:XXXXX/$1 [P,L]
